@@ -1,0 +1,15 @@
+.meiForm {
+  background-color: white;
+}
+
+.meiForm .form-group .form-label {
+  font-weight: bold;
+}
+
+.meiForm .form-control {
+  max-width: 300px;
+}
+
+.operatorComments .form-control {
+  max-width: 600px;
+}

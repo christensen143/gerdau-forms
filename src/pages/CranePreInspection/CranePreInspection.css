@@ -1,0 +1,19 @@
+.ciForm {
+  background-color: white;
+}
+
+.ciForm .form-control {
+  max-width: 300px;
+}
+
+.operatorComments .form-control {
+  max-width: 600px;
+}
+
+.ciInstructions {
+  text-align: center;
+}
+
+.ciForm .form-group .form-label {
+  font-weight: bold;
+}
