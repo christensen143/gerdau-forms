@@ -3,31 +3,43 @@ import React from 'react';
 import { Switch } from 'react-router-dom';
 
 import PublicRoute from './PublicRoute';
-// import PrivateRoute from './routing/PrivateRoute';
+import PrivateRoute from './PrivateRoute';
 
 import CranePreInspection from '../pages/CranePreInspection/CranePreInspection';
 import Home from '../pages/Home/Home';
 import MobileEquipmentInspection from '../pages/MobileEquipmentInspection/MobileEquipmentInspection';
 import TapeMeasureRecord from '../pages/TapeMeasureRecord/TapeMeasureRecord';
+import UserAdmin from '../pages/UserAdmin/UserAdmin';
+
+import Login from '../components/Login/Login';
+import ResetPassword from '../components/ResetPassword/ResetPassword';
 
 export default function Routes() {
   return (
     <Switch>
-      <PublicRoute restricted={true} path="/" exact component={Home} />
-      <PublicRoute
+      <PrivateRoute path="/" exact component={Home} />
+      <PrivateRoute
         path="/tapemeasurerecord"
         exact
         component={TapeMeasureRecord}
       />
-      <PublicRoute
+      <PrivateRoute
         path="/mobileequipmentinspection"
         exact
         component={MobileEquipmentInspection}
       />
-      <PublicRoute
+      <PrivateRoute
         path="/craneinspection"
         exact
         component={CranePreInspection}
+      />
+      <PrivateRoute path="/useradmin" exact component={UserAdmin} />
+      <PublicRoute restricted={true} path="/login" exact component={Login} />
+      <PublicRoute
+        restricted={true}
+        path="/login/reset"
+        exact
+        component={ResetPassword}
       />
     </Switch>
   );

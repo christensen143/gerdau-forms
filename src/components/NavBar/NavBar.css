@@ -4,3 +4,23 @@
 .navbar-dark .navbar-collapse .navbar-nav > a {
   color: #fefeff;
 }
+
+.navbar-nav a {
+  padding: 10px;
+}
+
+.navbar-nav span {
+  display: block;
+  padding: 0.7rem 0rem;
+  color: #fefeff;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+  color: #fefeff !important;
+}
+
+@media only screen and (max-width: 991px) {
+  .navbar-nav .material-icons {
+    display: none;
+  }
+}

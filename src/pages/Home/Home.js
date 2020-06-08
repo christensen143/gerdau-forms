@@ -1,14 +1,15 @@
 import React from 'react';
 
+import { Container } from 'react-bootstrap';
+
 import Instructions from '../../components/Instructions/Instructions';
 
 import './Home.css';
-import { Container } from 'react-bootstrap';
 
 const Home = () => {
   return (
     <Container>
-      <Instructions />;
+      <Instructions />
     </Container>
   );
 };
