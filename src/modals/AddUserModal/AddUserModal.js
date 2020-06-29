@@ -11,6 +11,7 @@ const AddUserModal = (props) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [displayName, setDisplayName] = useState('');
+  const [role, setRole] = useState('');
   const [error, setError] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
   const [success, setSuccess] = useState(false);
@@ -101,6 +102,23 @@ const AddUserModal = (props) => {
                   setPassword(e.target.value);
                 }}
               />
+            </Form.Group>
+            <Form.Group controlId="role">
+              <Form.Label>
+                Role: <span className="required">(Required)</span>
+              </Form.Label>
+
+              <Form.Control
+                as="select"
+                value={role}
+                onChange={(e) => {
+                  setRole(e.target.value);
+                }}
+              >
+                <option>Choose...</option>
+                <option>Admin</option>
+                <option>User</option>
+              </Form.Control>
             </Form.Group>
           </div>
         </Modal.Body>

@@ -61,15 +61,13 @@ const NavBar = () => {
                 <span className="material-icons">account_circle</span>
                 <NavDropdown title={user.displayName} id="basic-nav-dropdown">
                   {/* <NavDropdown.Item href="/useradmin">Admin</NavDropdown.Item> */}
-                  <NavLink
-                    to="/useradmin"
-                    activeStyle={{
-                      background: 'white',
-                      color: '#223c89',
-                    }}
-                  >
+                  <NavDropdown.Item href="/useradmin">
                     User Admin
-                  </NavLink>
+                  </NavDropdown.Item>
+                  <NavDropdown.Item href="/formadmin">
+                    Form Admin
+                  </NavDropdown.Item>
+
                   <NavDropdown.Item onClick={() => auth.signOut()}>
                     Logout
                   </NavDropdown.Item>

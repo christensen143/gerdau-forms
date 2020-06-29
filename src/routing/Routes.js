@@ -9,6 +9,7 @@ import CranePreInspection from '../pages/CranePreInspection/CranePreInspection';
 import Home from '../pages/Home/Home';
 import MobileEquipmentInspection from '../pages/MobileEquipmentInspection/MobileEquipmentInspection';
 import TapeMeasureRecord from '../pages/TapeMeasureRecord/TapeMeasureRecord';
+import FormAdmin from '../pages/FormAdmin/FormAdmin';
 import UserAdmin from '../pages/UserAdmin/UserAdmin';
 
 import Login from '../components/Login/Login';
@@ -34,6 +35,7 @@ export default function Routes() {
         component={CranePreInspection}
       />
       <PrivateRoute path="/useradmin" exact component={UserAdmin} />
+      <PrivateRoute path="/formadmin" exact component={FormAdmin} />
       <PublicRoute restricted={true} path="/login" exact component={Login} />
       <PublicRoute
         restricted={true}

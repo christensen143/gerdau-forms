@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 
-import { Alert, Form, Modal } from 'react-bootstrap';
+import { Form, Modal } from 'react-bootstrap';
 
 import LoaderButton from '../../components/LoaderButton/LoaderButton';
 
@@ -119,12 +119,6 @@ const EditUserModal = (props) => {
               onClick={handleCancel}
             />
           </div>
-          {/* {success && (
-            <Alert variant="success">
-              <p>User has been successfully edited!</p>
-            </Alert>
-          )}
-          {showError && <Alert variant="danger">{errorMessage}</Alert>} */}
         </Modal.Footer>
       </Modal>
     </div>
