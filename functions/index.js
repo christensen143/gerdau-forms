@@ -15,3 +15,8 @@ app.use(cors({ origin: true }));
 routesConfig(app);
 
 exports.api = functions.https.onRequest(app);
+
+// auth trigger (new user)
+exports.newUser = functions.auth.user().onCreate((user) => {
+  console.log('user created', user.email, user.uid);
+});

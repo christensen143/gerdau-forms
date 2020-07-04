@@ -1,0 +1,21 @@
+.Polisher .nav-item {
+  background-color: #3670a7;
+  color: #fefeff;
+}
+
+.Polisher .nav-item .active {
+  background-color: #fefeff;
+  color: #004a8f;
+}
+
+.Polisher .nav-item:hover {
+  color: #b8cde0;
+}
+
+.Polisher .desc-text {
+  height: 100%;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  text-align: center;
+  font-weight: bold;
+}

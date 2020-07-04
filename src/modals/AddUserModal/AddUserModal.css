@@ -11,7 +11,7 @@
 }
 
 .AddUserModal .icon-box i {
-  color: #223c89;
+  color: #004a8f;
   font-size: 70px;
 }
 
@@ -58,5 +58,9 @@
 }
 
 .text-center {
+  width: 100%;
+}
+
+.AddUserModal .modal-footer .alert-success {
   width: 100%;
 }

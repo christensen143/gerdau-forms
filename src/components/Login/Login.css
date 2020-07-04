@@ -25,6 +25,14 @@
     margin: 0 auto;
     max-width: 1000px;
   }
+
+  .Login form a {
+    color: #004a8f;
+  }
+
+  .Login form .form-group .form-label {
+    color: #004a8f;
+  }
 }
 img {
   align-items: center;

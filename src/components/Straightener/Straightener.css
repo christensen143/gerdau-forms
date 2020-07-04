@@ -1,0 +1,13 @@
+.Straightener .nav-item {
+  background-color: #3670a7;
+  color: #fefeff;
+}
+
+.Straightener .nav-item .active {
+  background-color: #fefeff;
+  color: #004a8f;
+}
+
+.Straightener .nav-item:hover {
+  color: #b8cde0;
+}

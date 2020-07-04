@@ -57,7 +57,7 @@ const GageRecords = () => {
       })
       .then(() => {
         setShowSuccessModal(true);
-        uncheckRadios(2);
+        uncheckRadios(1, 2);
         setIsSubmitting(false);
         setType('');
         setOperator('');

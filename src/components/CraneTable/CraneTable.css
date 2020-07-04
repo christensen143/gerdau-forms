@@ -1,0 +1,31 @@
+.MuiTableSortLabel-root.MuiTableSortLabel-active,
+.MuiTableSortLabel-root:hover,
+.MuiTableSortLabel-icon {
+  color: inherit !important;
+}
+
+.MuiTypography-h6 {
+  color: #004a8f;
+}
+
+.csv-link a {
+  color: #004a8f;
+  font-size: 16px;
+}
+
+.csv-link a i {
+  vertical-align: bottom;
+}
+
+.csv-link a:hover {
+  color: #004a8f;
+  text-decoration: none;
+}
+
+.csv-link {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  padding: 0 1rem 0 1rem;
+  justify-content: right;
+}

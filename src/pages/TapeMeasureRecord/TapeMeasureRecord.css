@@ -6,3 +6,12 @@
   padding-right: 0;
   padding-left: 0;
 }
+
+.tapeMeasureRecord .nav-tabs .active {
+  color: #004a8f;
+  font-weight: bold;
+}
+
+.tapeMeasureRecord .nav-tabs .nav-item {
+  color: #004a8f;
+}

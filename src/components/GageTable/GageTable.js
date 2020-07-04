@@ -2,9 +2,14 @@ import React, { useEffect, useState } from 'react';
 
 import { firestore } from '../../utils/firebase';
 
+import moment from 'moment';
+
 import { Container } from 'react-bootstrap';
+import { CSVLink } from 'react-csv';
 
 import MaterialTable from 'material-table';
+
+import './GageTable.css';
 
 const useData = () => {
   const [data, setData] = useState([]);
@@ -25,6 +30,8 @@ const useData = () => {
 const GageTable = () => {
   const data = useData();
 
+  const date = moment().format('YYYY-MM-DD');
+
   const myData = data.map((d) => {
     return {
       actReadings: d['Act. Readings'],
@@ -38,11 +45,40 @@ const GageTable = () => {
       date: d['Date'],
     };
   });
+
+  const headers = [
+    { label: 'Date Submitted', key: 'date' },
+    { label: 'Submitted By', key: 'user' },
+    {
+      label: 'Type',
+      key: 'type',
+    },
+    { label: 'Operator', key: 'operator' },
+    { label: 'Gage Number', key: 'gageNumber' },
+    { label: 'Act Readings', key: 'actReadings' },
+    { label: 'Std./Block ID', key: 'stdBlockId' },
+    {
+      label: 'Pass',
+      key: 'pass',
+    },
+    { label: 'Comments', key: 'comments' },
+  ];
   return (
     <>
       <Container className="GageTable">
+        <div className="csv-link mt-2">
+          <CSVLink
+            data={myData}
+            headers={headers}
+            filename={`gage-data-${date}`}
+          >
+            <i className="material-icons">get_app</i> Export to CSV
+          </CSVLink>
+        </div>
         <MaterialTable
           columns={[
+            { title: 'Date Submitted', field: 'date', defaultSort: 'desc' },
+            { title: 'Submitted By', field: 'user' },
             {
               title: 'Type',
               field: 'type',
@@ -56,8 +92,6 @@ const GageTable = () => {
               field: 'pass',
             },
             { title: 'Comments', field: 'comments' },
-            { title: 'Submitted By', field: 'user' },
-            { title: 'Date Submitted', field: 'date' },
           ]}
           data={myData}
           options={{

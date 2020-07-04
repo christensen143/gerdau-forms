@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 
+import firebase from 'firebase/app';
+import 'firebase/auth';
+
 import { auth } from '../../utils/firebase';
 import { Alert, Form } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
@@ -18,13 +21,31 @@ const Login = () => {
   const handleSignIn = (e) => {
     e.preventDefault();
     setIsLoading(true);
-    auth.signInWithEmailAndPassword(email, password).catch((error) => {
-      setErrorMessage(
-        'There was an error with your signin. Please check your email and password and try again.'
-      );
-      console.error(error);
-      setError(true);
-    });
+
+    firebase
+      .auth()
+      .setPersistence(firebase.auth.Auth.Persistence.SESSION)
+      .then(function () {
+        // Existing and future Auth states are now persisted in the current
+        // session only. Closing the window would clear any existing state even
+        // if a user forgets to sign out.
+        // ...
+        // New sign-in will be persisted with session persistence.
+        return firebase.auth().signInWithEmailAndPassword(email, password);
+      })
+      .catch(function (error) {
+        // Handle Errors here.
+        setError(true);
+        setErrorMessage(error.message);
+      });
+
+    // auth.signInWithEmailAndPassword(email, password).catch((error) => {
+    //   setErrorMessage(
+    //     'There was an error with your signin. Please check your email and password and try again.'
+    //   );
+    //   console.error(error);
+    //   setError(true);
+    // });
     setIsLoading(false);
   };
 

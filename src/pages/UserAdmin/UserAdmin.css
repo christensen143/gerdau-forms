@@ -32,3 +32,12 @@
 .UserAdmin .btn {
   font-size: 0.875rem;
 }
+
+.UserAdmin {
+  background-color: white;
+  padding-top: 10px;
+}
+
+.btn-link:focus {
+  text-decoration: none;
+}

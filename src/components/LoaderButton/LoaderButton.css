@@ -11,3 +11,8 @@
     transform: scale(1) rotate(360deg);
   }
 }
+
+.LoaderButton {
+  background-color: #004a8f;
+  border-color: #004a8f;
+}

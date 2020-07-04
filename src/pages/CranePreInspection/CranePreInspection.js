@@ -33,7 +33,6 @@ const CranePreInspection = () => {
   const [showSuccessModal, setShowSuccessModal] = useState(false);
 
   const date = moment().format('dddd, MMMM Do YYYY, h:mm:ss a');
-  const radioCount = document.getElementsByTagName('input').length;
 
   const validateForm = () => {
     return shift !== '';
@@ -61,7 +60,7 @@ const CranePreInspection = () => {
       })
       .then(() => {
         setShowSuccessModal(true);
-        uncheckRadios(radioCount);
+        uncheckRadios(1, 27);
         setIsSubmitting(false);
         setShift('');
         setBlockHook('');
@@ -136,19 +135,19 @@ const CranePreInspection = () => {
                 <p>
                   Visually inspect for wear, broken wire, and kinks. A wire rope
                   used on a crane shall be repaired or replaced if:
-                  <ol type="a">
-                    <li>
-                      Within a segment of 8 diameters in length, the total
-                      number of broken wires, exceeds 10% of the total number of
-                      wires, or 6 or more wires are broken in a strand.{' '}
-                    </li>
-                    <li>
-                      The wire rope has been kinked, crushed, or bird caged, or
-                      has sustained other damage
-                    </li>
-                    <li> The wire rope shows heat or corrosive damage.</li>
-                  </ol>
                 </p>
+                <ol type="a">
+                  <li>
+                    Within a segment of 8 diameters in length, the total number
+                    of broken wires, exceeds 10% of the total number of wires,
+                    or 6 or more wires are broken in a strand.{' '}
+                  </li>
+                  <li>
+                    The wire rope has been kinked, crushed, or bird caged, or
+                    has sustained other damage
+                  </li>
+                  <li> The wire rope shows heat or corrosive damage.</li>
+                </ol>
               </Form.Group>
               <hr />
               <Form.Group as={Row}>

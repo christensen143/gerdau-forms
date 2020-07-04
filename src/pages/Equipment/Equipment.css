@@ -1,0 +1,17 @@
+.Equipment {
+  background-color: white;
+}
+
+.container {
+  padding-right: 0;
+  padding-left: 0;
+}
+
+.Equipment .nav-tabs .active {
+  color: #004a8f;
+  font-weight: bold;
+}
+
+.Equipment .nav-tabs .nav-item {
+  color: #004a8f;
+}

@@ -2,3 +2,18 @@
   background-color: white;
   padding-top: 10px;
 }
+
+.FormAdmin .nav-tabs .nav-item .nav-link,
+.FormAdmin .tab-content .tab-pane .nav-pills .nav-item .nav-link {
+  color: #004a8f;
+}
+
+.FormAdmin .nav-tabs .nav-item .active {
+  color: #004a8f;
+  font-weight: bold;
+}
+
+.FormAdmin .tab-content .tab-pane .nav-pills .nav-item .active {
+  background-color: #004a8f;
+  color: white;
+}

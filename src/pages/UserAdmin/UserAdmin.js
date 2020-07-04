@@ -7,6 +7,7 @@ import { Button, Container } from 'react-bootstrap';
 
 import ConfirmationModal from '../../modals/ConfirmationModal/ConfirmationModal';
 import EditUserModal from '../../modals/EditUserModal/EditUserModal';
+import AddUserModal from '../../modals/AddUserModal/AddUserModal';
 
 import useGetUsers from '../../custom-hooks/useGetUsers';
 
@@ -28,6 +29,12 @@ const reducer = (state, action) => {
       return {
         ...state,
         showEditUserModal: action.showEditUserModal,
+        user: action.user,
+      };
+    case 'SHOW_ADD_USER_MODAL':
+      return {
+        ...state,
+        showAddUserModal: action.showAddUserModal,
         user: action.user,
       };
     case 'SET_IS_CANCELLING':
@@ -67,6 +74,7 @@ const UserAdmin = () => {
     user: null,
     showError: false,
     errorMessage: null,
+    showAddUserModal: false,
   });
 
   const {
@@ -77,6 +85,7 @@ const UserAdmin = () => {
     user,
     showError,
     errorMessage,
+    showAddUserModal,
   } = data;
 
   const handleDeleteUser = async (e) => {
@@ -113,6 +122,34 @@ const UserAdmin = () => {
           },
         }
       );
+    } catch (err) {
+      dispatch({ type: 'SET_ERROR', showError: true, errorMessage: err });
+    }
+    dispatch({ type: 'SET_IS_CONFIRMING', isConfirming: true });
+    getUsers();
+    handleCancel();
+  };
+
+  const handleAddUser = async (email, role, displayName, password) => {
+    dispatch({ type: 'SET_IS_CONFIRMING', isConfirming: true });
+    try {
+      const body = {
+        email: email,
+        role: role,
+        displayName: displayName,
+        password: password,
+      };
+      await axios
+        .post(
+          `https://us-central1-gerdau-forms.cloudfunctions.net/api/users`,
+          body,
+          {
+            headers: {
+              Authorization: `Bearer ${idToken}`,
+            },
+          }
+        )
+        .then((data) => console.log(data));
     } catch (err) {
       dispatch({ type: 'SET_ERROR', showError: true, errorMessage: err });
     }
@@ -166,6 +203,17 @@ const UserAdmin = () => {
   return (
     <>
       <Container className="UserAdmin">
+        <div className="d-inline-block">
+          <Button
+            onClick={() =>
+              dispatch({ type: 'SHOW_ADD_USER_MODAL', showAddUserModal: true })
+            }
+            variant="link"
+          >
+            <i className="material-icons md-48 mr-1">add_circle_outline</i>{' '}
+            <span>Add User</span>
+          </Button>
+        </div>
         <MaterialTable
           columns={[
             {
@@ -221,6 +269,22 @@ const UserAdmin = () => {
         isConfirming={isConfirming}
         isCancelling={isCancelling}
         confirmBtnBgColor="#f44336"
+        confirmBtnColor="#fff"
+        cancelBtnBgColor="#ccc"
+        cancelBtnColor="#fff"
+      />
+      <AddUserModal
+        showModal={showAddUserModal}
+        hideModal={() =>
+          dispatch({ type: 'SHOW_ADD_USER_MODAL', showAddUserModal: false })
+        }
+        error={showError}
+        errorMessage={errorMessage}
+        handleAddUser={handleAddUser}
+        handleCancel={handleCancel}
+        isConfirming={isConfirming}
+        isCancelling={isCancelling}
+        confirmBtnBgColor="#004a8f"
         confirmBtnColor="#fff"
         cancelBtnBgColor="#ccc"
         cancelBtnColor="#fff"

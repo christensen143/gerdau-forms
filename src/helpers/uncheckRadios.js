@@ -1,6 +1,6 @@
-const uncheckRadios = (num) => {
+const uncheckRadios = (start, end) => {
   let i;
-  for (i = 1; i <= num; i++) {
+  for (i = start; i <= end; i++) {
     document.getElementById(`radio${i}`).checked = false;
   }
 };

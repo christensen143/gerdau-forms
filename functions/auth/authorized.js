@@ -1,9 +1,9 @@
 module.exports.isAuthorized = (opts) => {
   return (req, res, next) => {
-    const { role, email, uid } = res.locals;
+    const { role, uid } = res.locals;
     const { id } = req.params;
 
-    if (email === 'christensen143@gmail.com') return next();
+    if (role === 'Admin') return next();
 
     if (opts.allowSameUser && id && uid === id) return next();
 

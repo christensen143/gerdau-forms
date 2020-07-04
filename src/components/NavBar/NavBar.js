@@ -9,7 +9,15 @@ import { AuthContext } from '../../context/AuthContext';
 import './NavBar.css';
 
 const NavBar = () => {
-  const { user } = useContext(AuthContext);
+  const { user, role } = useContext(AuthContext);
+
+  const isAdmin = () => {
+    if (role === 'Admin') {
+      return true;
+    } else {
+      return false;
+    }
+  };
 
   return (
     <Container className="NavBar">
@@ -56,17 +64,30 @@ const NavBar = () => {
                 >
                   Crane Pre-Inspection
                 </NavLink>
+                <NavLink
+                  to="/equipment"
+                  activeStyle={{
+                    background: 'white',
+                    color: '#223c89',
+                  }}
+                >
+                  Equipment
+                </NavLink>
               </Nav>
               <Nav className="ml-auto">
                 <span className="material-icons">account_circle</span>
                 <NavDropdown title={user.displayName} id="basic-nav-dropdown">
                   {/* <NavDropdown.Item href="/useradmin">Admin</NavDropdown.Item> */}
-                  <NavDropdown.Item href="/useradmin">
-                    User Admin
-                  </NavDropdown.Item>
-                  <NavDropdown.Item href="/formadmin">
-                    Form Admin
-                  </NavDropdown.Item>
+                  {isAdmin && (
+                    <>
+                      <NavDropdown.Item href="/useradmin">
+                        User Admin
+                      </NavDropdown.Item>
+                      <NavDropdown.Item href="/formadmin">
+                        Form Admin
+                      </NavDropdown.Item>
+                    </>
+                  )}
 
                   <NavDropdown.Item onClick={() => auth.signOut()}>
                     Logout

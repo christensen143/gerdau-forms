@@ -37,8 +37,6 @@ const MobileEquipmentInspection = () => {
 
   const date = moment().format('dddd, MMMM Do YYYY, h:mm:ss a');
 
-  const radioCount = document.getElementsByTagName('input').length;
-
   const validateForm = () => {
     return shift !== '';
   };
@@ -80,7 +78,7 @@ const MobileEquipmentInspection = () => {
         setParkingBrake('');
         setOverheadGuardForksBackrest('');
         setOperatorComments('');
-        uncheckRadios(radioCount);
+        uncheckRadios(1, 22);
 
         setIsSubmitting(false);
       });

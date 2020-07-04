@@ -2,9 +2,14 @@ import React, { useEffect, useState } from 'react';
 
 import { firestore } from '../../utils/firebase';
 
+import moment from 'moment';
+
 import { Container } from 'react-bootstrap';
+import { CSVLink } from 'react-csv';
 
 import MaterialTable from 'material-table';
+
+import './MeiTable.css';
 
 const useData = () => {
   const [data, setData] = useState([]);
@@ -27,6 +32,8 @@ const useData = () => {
 const MeiTable = () => {
   const data = useData();
 
+  const date = moment().format('YYYY-MM-DD');
+
   const myData = data.map((d) => {
     return {
       fuelSystemLeaks: d['Fuel System Leaks'],
@@ -46,11 +53,55 @@ const MeiTable = () => {
       date: d['Date'],
     };
   });
+
+  const headers = [
+    { label: 'Date Submitted', key: 'date' },
+    { label: 'Submitted By', key: 'user' },
+    {
+      label: 'Shift',
+      key: 'shift',
+    },
+    { label: 'Service Brakes', key: 'serviceBrakes' },
+    { label: 'Mast & Chains', key: 'mastChains' },
+    { label: 'Fuel System Leaks', key: 'fuelSystemLeaks' },
+    { label: 'Horn & Strobe Light', key: 'hornStrobeLight' },
+    {
+      label: 'Oil Leaks',
+      key: 'oilLeaks',
+    },
+    { label: 'Steering Play', key: 'steeringPlay' },
+    {
+      label: 'Lift Control, Tilt, Side Shift Controls',
+      key: 'liftCtlTiltSideShiftCtls',
+    },
+    { label: 'Tire/Wheel Condition', key: 'tireWheelCondition' },
+    { label: 'Lights (forward, backup, brake)', key: 'lights' },
+    {
+      label: 'Parking Brake',
+      key: 'parkingBrake',
+    },
+    {
+      label: 'Overhead Guard, Forks, and Backrest',
+      key: 'overheadGuardForksBackrest',
+    },
+  ];
   return (
     <>
       <Container className="MeiTable">
+        <div className="csv-link mt-2">
+          <CSVLink
+            data={myData}
+            headers={headers}
+            filename={`mei-data-${date}`}
+          >
+            <i className="material-icons">get_app</i> Export to CSV
+          </CSVLink>
+        </div>
+
         <MaterialTable
           columns={[
+            { title: 'Date Submitted', field: 'date', defaultSort: 'desc' },
+            { title: 'Submitted By', field: 'user' },
             {
               title: 'Shift',
               field: 'shift',
@@ -78,8 +129,6 @@ const MeiTable = () => {
               title: 'Overhead Guard, Forks, and Backrest',
               field: 'overheadGuardForksBackrest',
             },
-            { title: 'Submitted By', field: 'user' },
-            { title: 'Date Submitted', field: 'date' },
           ]}
           data={myData}
           options={{
