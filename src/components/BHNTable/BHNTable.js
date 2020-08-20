@@ -66,7 +66,14 @@ const BHNTable = () => {
         </div>
         <MaterialTable
           columns={[
-            { title: 'Date Submitted', field: 'date', defaultSort: 'desc' },
+            {
+              title: 'Date Submitted',
+              field: 'date',
+              defaultSort: 'desc',
+              customSort: (a, b) =>
+                moment(a.date, 'dddd, MMMM Do YYYY, h:mm:ss a').format('x') -
+                moment(b.date, 'dddd, MMMM Do YYYY, h:mm:ss a').format('x'),
+            },
             { title: 'Submitted By', field: 'user' },
             {
               title: 'Operator',

@@ -61,7 +61,7 @@ const MobileEquipmentInspection = () => {
         'Parking Brake': parkingBrake,
         'Overhead Guard, Forks, and Backrest': overheadGuardForksBackrest,
         'Operator Comments': operatorComments,
-        User: user.email,
+        User: user.displayName,
       })
       .then(() => {
         setShowSuccessModal(true);
